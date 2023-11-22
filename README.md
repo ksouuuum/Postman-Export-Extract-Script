@@ -6,13 +6,11 @@
 
 ###
 
-# **Install Python** ![[Python](img/python_65.png)](https://github.com/PackeTsar/Install-Python/blob/master/img/python_65.png?raw=true)
+<h1 align="left">Install Python</h1>
 
-A Quick Guide for Installing Python on Common Operating Systems
+###
 
-1. [Install on Windows](#windows-)
-2. [Install on MacOS](#macos-)
-3. [Install on Linux](#linux-)
+[Guide here 😄](https://gist.github.com/MichaelCurrin/57caae30bd7b0991098e9804a9494c23)
 
 ###
 
@@ -20,11 +18,11 @@ A Quick Guide for Installing Python on Common Operating Systems
 
 ###
 
-<p align="left">✅ Enter your Json file name/path<br>✅ Define your output file path<br>⚙️ Run<br>📇your file is generated</p>
+<p align="left">✅ Enter your Json file name<br>✅ Define your output file path<br>✅ Run</p>
 
 ###
 
-<h1 align="left"></h1>
+<h2 align="left"></h2>
 
 ###
 
