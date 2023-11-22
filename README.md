@@ -18,7 +18,7 @@
 
 ###
 
-<p align="left">✅ Enter your Json file name<br>✅ Define your output file path<br>✅ Run</p>
+<p align="left">⌨️ Enter your Json file name<br>📍 Define your output file path<br>⚙️ Run<br>✅Your file is generated</p>
 
 ###
 
