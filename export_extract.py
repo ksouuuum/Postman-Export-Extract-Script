@@ -79,7 +79,7 @@ if not success:
 # Afficher les informations de la run
 display_run_info(data)
 
-# Extraire les noms des tests sans tests
+# Extraire les noms des tests vides
 names_without_tests = []
 results = data.get('results', [])
 if isinstance(results, list):
