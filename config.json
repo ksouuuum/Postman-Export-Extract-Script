@@ -1,5 +1,5 @@
 {
-    "input_file_path": "EDIT HERE",
-    "output_file_path": "EDIT HERE"
-  }
-  
+  "input_file_path": "urpostmanexport.postman_test_run.json",
+  "names_with_tests_output_file_path": "names_with_tests.json",
+  "names_without_tests_output_file_path": "names_without_tests.json"
+}

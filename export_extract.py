@@ -14,6 +14,7 @@ def check_json_integrity(json_data):
 
         # Vérifier si toutes les clés attendues sont présentes
         if all(key in data for key in expected_keys):
+            print("\n")
             print("Intégrité du fichier JSON vérifiée.")
             return True, data
         else:
@@ -35,6 +36,7 @@ def display_run_info(run_data):
     except ValueError:
         started_at_readable = 'Format de date invalide'
 
+    print("\n")
     print(f"Collection ou dossier : {run_name}")
     print(f"Date de l'export : {started_at_readable}")
     print("\n")
@@ -60,9 +62,10 @@ if not config_data:
     print("Le programme s'arrête en raison d'une erreur de configuration.")
     exit()
 
-# Chemin du fichier d'entrée et du fichier de sortie à partir de la configuration
+# Chemin du fichier d'entrée et des fichiers de sortie à partir de la configuration
 input_file_path = config_data.get('input_file_path', 'DEFAULT_CHEMIN_ENTREE.json')
-output_file_path = config_data.get('output_file_path', 'DEFAULT_CHEMIN_SORTIE.json')
+names_with_tests_output_file_path = config_data.get('names_with_tests_output_file_path', 'NAMES_WITH_TESTS_SORTIE.json')
+names_without_tests_output_file_path = config_data.get('names_without_tests_output_file_path', 'NAMES_WITHOUT_TESTS_SORTIE.json')
 
 # Charger le fichier JSON d'entrée
 with open(input_file_path) as json_file:
@@ -79,19 +82,34 @@ if not success:
 # Afficher les informations de la run
 display_run_info(data)
 
-# Extraire les noms des tests vides
+# Extraire les noms avec tests et les noms sans tests
+names_with_tests = []
 names_without_tests = []
 results = data.get('results', [])
 if isinstance(results, list):
     for item in results:
-        if isinstance(item, dict) and not item.get('tests'):
-            names_without_tests.append(item.get('name'))
+        name = item.get('name')
+        if name:
+            if item.get('tests'):
+                names_with_tests.append(name)
+            else:
+                names_without_tests.append(name)
 
-# Afficher le nombre de tests vides
-print("Nombre de tests vides :", len(names_without_tests))
+# Générer un fichier JSON avec les noms avec tests
+with open(names_with_tests_output_file_path, 'w') as names_with_tests_output_file:
+    json.dump(names_with_tests, names_with_tests_output_file, indent=2)
 
-# Générer un fichier JSON avec la liste names_without_tests
-with open(output_file_path, 'w') as output_file:
-    json.dump(names_without_tests, output_file, indent=2)
+print(f'Le fichier "{names_with_tests_output_file_path}" a été généré avec succès pour les noms avec tests.')
 
-print(f'Le fichier "{output_file_path}" a été généré avec succès.')
+# Générer un fichier JSON avec les noms sans tests
+with open(names_without_tests_output_file_path, 'w') as names_without_tests_output_file:
+    json.dump(names_without_tests, names_without_tests_output_file, indent=2)
+
+
+print(f'Le fichier "{names_without_tests_output_file_path}" a été généré avec succès pour les noms sans tests.')
+
+print("\n")
+total_names = len(names_with_tests) + len(names_without_tests)
+print(f"Nombre total de rêquetes : {total_names}")
+print(f"Nombre de rêquetes avec test : {len(names_with_tests)}")
+print(f"Nombre de rêquetes sans test : {len(names_without_tests)}")
