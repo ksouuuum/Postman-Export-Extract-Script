@@ -18,7 +18,7 @@
 
 ###
 
-<p align="left">📥 Define your intput file path<br>📤 Define your output file path<br>⚙️ Run<br>✅Your file is generated</p>
+<p align="left">📥 Define your intput file path<br>📤 Define your output files path<br>⚙️ Run<br>✅Your files are generated</p>
 
 ###
 
